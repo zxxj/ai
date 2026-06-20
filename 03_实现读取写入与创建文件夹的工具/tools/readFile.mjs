@@ -2,15 +2,15 @@ import { tool } from "@langchain/core/tools";
 import fs from "fs/promises";
 import z from "zod";
 
-const readFileTool = tool(
+export const readFileTool = tool(
   async ({ filePath }) => {
     console.log(`[readFileTool 开始执行!]`);
     try {
       const content = await fs.readFile(filePath, "utf-8");
-      console.log(`[readFileTool 已成功读取文件,共 ${content.length} 字节!]`);
+      console.log(`[readFileTool] 已成功读取文件,共 ${content.length} 字节!`);
       return content;
     } catch (error) {
-      console.log(`[readFileTool 读取文件失败!]`);
+      console.log(`[readFileTool] 读取文件失败!`);
       return;
     }
   },
